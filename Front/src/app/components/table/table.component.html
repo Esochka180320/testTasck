@@ -1,0 +1,79 @@
+<div class="container">
+  <br>
+  <form (submit)="find(option.value)">
+    <div class="form-group">
+      <input type="text" id="option" class="form-control" #option placeholder="Write name month">
+      <button type="submit" class="btn-outline-success">find</button>
+    </div>
+  </form>
+
+  <button class="btn btn-info" (click) = "op()" >подсказка</button>
+
+  <form *ngIf="isEdit4" (submit)="cancel()">
+    <div class="form-group">
+      <p>Months and their numbers:</p>
+      <p>January-1 February-2 March-3</p>
+      <p>April-4 May-5 June-6</p>
+      <p>July-7 August-8 September-9</p>
+      <p>October-10 November-11 December-12</p>
+      <button type="submit" class="btn-outline-success">not</button>
+    </div>
+  </form>
+  <div class="table-responsive" >
+    <table class="table table-striped table-dark" rz-mode="resizeMode">
+      <thead >
+      <th >Number</th>
+      <th >Month</th>
+      </thead>
+      <tr *ngFor="let month of task">
+        <td>{{month.number}}</td>
+        <td>{{month.name}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <button class="btn btn-info" (click) = "add()" >создать новый элемент</button>
+  <form *ngIf="isEdit1" (submit)="addMonth(name.value, number.value, option.value)">
+    <div class="form-group">
+      <input type="text"  class="form-control" #name placeholder="Write name month">
+      <input type="number"  class="form-control" #number placeholder="Write number month">
+      <button type="submit" class="btn-outline-success">ок</button>
+    </div>
+  </form>
+  <form *ngIf="isEdit1" (submit)="cancel()">
+    <div class="form-group">
+      <button type="submit" class="btn-outline-success">not</button>
+    </div>
+  </form>
+  <br>
+  <br>
+  <button class="btn btn-info" (click) = "update()" >редактировать выбранный элемент</button>
+  <form *ngIf="isEdit2" (submit)="updateMonth(number1.value,name.value, number2.value,option.value)">
+    <div class="form-group">
+      <input type="number"  class="form-control" #number1 placeholder="Write old number month">
+      <input type="text"  class="form-control" #name placeholder="Write new name month">
+      <input type="number"  class="form-control" #number2 placeholder="Write new number month">
+      <button type="submit" class="btn-outline-success">ок</button>
+    </div>
+  </form>
+  <form *ngIf="isEdit2" (submit)="cancel()">
+    <div class="form-group">
+      <button type="submit" class="btn-outline-success">not</button>
+    </div>
+  </form>
+  <br>
+  <br>
+  <button class="btn btn-info" (click) = "delete()" >удалить выбранный элемент</button>
+  <form *ngIf="isEdit3" (submit)="deleteMonth(number.value, option.value)">
+    <div class="form-group">
+      <input type="number"  class="form-control" #number placeholder="Write number month">
+      <button type="submit" class="btn-outline-success">ок</button>
+    </div>
+  </form>
+  <form *ngIf="isEdit3" (submit)="cancel()">
+    <div class="form-group">
+      <button type="submit" class="btn-outline-success">not</button>
+    </div>
+  </form>
+</div>
+
